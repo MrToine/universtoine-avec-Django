@@ -1,0 +1,45 @@
+<header style="background:url('/static/img/header_variation_3.png') no-repeat;height: 313px; background-color: #3B3838; border-bottom: 1px solid black" class="section">
+  <div id="site-name-container" style="">
+    <div class="row">
+      <div class="col-9 m-5">
+        <h1 class="title is-1" id="site-name">Univers-Toine</h1>
+        <h4 class="subtitle" style="background-color: rgba(255,255,255,0.7);width: 300px">Un lieu, des passions</h4>
+      </div>
+      {% if user.is_authenticated %}
+        <div class="col-2">
+          <div class="row bg-dark m-5">
+            <div class="col">
+              <h3>{{ user.username }}</h3>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'news:index' %}">Accueil</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Forum</a>
+        </li>
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:logout' %}">Déconnexion</a>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:login' %}">Connexion</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'users:register' %}">Inscription</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-9 mx-auto">
+            <h2 class="title-2">Connexion</h2>
+            <div class="alert alert-info">
+                A fin de pouvoir profiter d'un espace personnel ainsi que de fonctionnalités d'interaction au sein du site, il est nécessaire de vous authentifier. Si vous ne possedez pas de compte, vous pouvez en créer ici : <a href="register">M'inscrire</a>.
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 mx-auto bg-dark p-3">
+            {% if message %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endif %}
+            <form action="{% url 'users:login' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Pseudo</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Identifiant">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="********">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">Me connecter</button>
+                    <a href="{% url 'users:register' %}" class="btn btn-warning">Créer un compte</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

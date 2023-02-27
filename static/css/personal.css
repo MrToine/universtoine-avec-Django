@@ -1,0 +1,20 @@
+.mt-10 {
+    margin-top: 10rem !important;
+  }
+
+  
+.title-1 {
+    border-left: 5px solid #3b88bb;
+    border-bottom: 2px solid #3b88bb;
+}
+
+.title-2::before {
+    content: "★";
+    color: #bec057; /* couleur du point */
+    font-size: 1em; /* taille du point */
+    margin-right: 3px; /* espace entre le point et le texte */
+}
+
+.title-2 {
+    border-bottom: 2px solid #3b88bb;
+}

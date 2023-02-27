@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block body %}
+    <h1>Sondages : </h1>
+    {% if lastPolls %}
+        <ul>
+            {% for question in lastPolls %}
+                <li><a href="{% url 'polls:detail' question.id %}">{{ question.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Pas de sondage disponible</p>
+    {% endif %}
+{% endblock %}

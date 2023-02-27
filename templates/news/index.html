@@ -1,0 +1,92 @@
+{% extends "layout.html" %}
+{% block body %}
+<section class="py-5 text-left container">
+    <div class="row py-lg-5">
+      <div class="col-lg-12 col-md-8 mx-auto">
+        <h1 class="fw-light">Edito</h1>
+        <p class="lead text-muted">Vous êtes au bon endroit !
+      Bienvenue sur Univers-Toine, la plateforme qui vous offre un espace communautaire old-school où vous pouvez discuter et vous connecter avec des personnes qui partagent les mêmes centres d'intérêts que vous.
+      Notre forum regorge de discussions passionnantes sur une variété de sujets classés dans des catégories appropriées. Et ce n'est pas tout ! Nous avons également une section actualité qui vous tient informé sur les dernières tendances et nouvelles importantes.</p>
+    <p class="lead text-muted"> 
+      Alors, ne perdez plus de temps et rejoignez-nous dans notre espace communautaire ! Si vous le souhaitez, vous pouvez vous inscrire via le lien "s'inscrire" et commencer à explorer notre monde passionnant dès maintenant.
+    </p>
+        <p>
+          <a href="#" class="btn btn-secondary my-2">Direction le forum</a>
+          <a href="#" class="btn btn-primary my-2">S'inscrire</a>
+        </p>
+      </div>
+    </div>
+  </section>
+  <div class="row bg-light">
+    <div class="col-md-9">
+      <div class="album py-5">
+      <div class="container">
+        <h1 class="text-dark title-1">Dernières Actus</h1>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for n in news %}
+            <div class="col">
+              <div class="card shadow-sm">
+                <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
+                <div class="card-header">{{ n.name }}</div>
+                <div class="card-body">
+                  <small class="text-muted">Le {{ n.created_at }} 
+                  {% if n.category.name %}
+                    dans <a href="" title="" class="text-primary">{{ n.category.name }}</a>
+                  {% endif %}
+                  </small>
+                  <p class="card-text">{{ n.content|safe|truncatechars_html:250 }}...</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="" type="button" class="btn btn-sm btn-outline-info">Aller jeter un oeil</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <h1 class="text-dark mt-5 title-1">Derniers Sujets du Forum</h1>
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for n in news %}
+            <div class="col">
+              <div class="card shadow-sm">
+                <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
+                <div class="card-header">{{ n.name }}</div>
+                <div class="card-body">
+                  <small class="text-muted">Le {{ n.created_at }} 
+                  {% if n.category.name %}
+                    dans <a href="" title="" class="text-primary">{{ n.category.name }}</a>
+                  {% endif %}
+                  </small>
+                  <p class="card-text">
+                    {{ n.content|safe|slice:50 }}
+                  </p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <a href="" type="button" class="btn btn-sm btn-outline-info">Aller jeter un oeil</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="mt-2">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2 bg-light">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="height:100%">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
+            <span class="fs-4">Menu</span>
+          </a>
+          <hr>
+          <div class="list-group">
+            <a href="#" class="list-group-item list-group-item-action">Lien</a>
+          </div>
+        </div>
+    </div>
+  </div> 
+{% endblock %}

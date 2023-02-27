@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block body %}
+    <div class="row">
+        <div class="col-9 mx-auto">
+            <h2 class="title-2">Inscription à l'espace membre</h2>
+            <div class="alert alert-primary">
+                <p>
+                    A fin de pouvoir profiter d'un espace personnel ainsi que de fonctionnalités d'intéractions au sein du site, il est nécessaire de vous authentifier. Si vous ne possedez pas de compte, vous pouvez en créer un ici.  
+                </p>
+                <p>
+                    Si vous possedez déjà un compte, connectez-vous en suivant le lien suivant : <a href="login">Me connecter</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4 mx-auto bg-dark p-3">
+            {% if message %}
+                <div class="alert alert-danger">{{ message }}</div>
+            {% endif %}
+            <form action="{% url 'users:register' %}" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="username" class="form-label">Pseudo</label>
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Identifiant">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="utilisateur@email.com">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="********">
+                </div>
+                <div class="mb-3">
+                    <label for="repeat_password" class="form-label">Mot de passe (confirmation)</label>
+                    <input type="repeat_password" class="form-control" id="repeat_password" name="repeat_password" placeholder="********">
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-primary" type="submit">M'inscrire</button>
+                    <a href="{% url 'users:login' %}" class="btn btn-warning">J'ai un compte</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
