@@ -1,15 +1,30 @@
 <header style="background:url('/static/img/header_variation_3.png') no-repeat;height: 313px; background-color: #3B3838; border-bottom: 1px solid black" class="section">
   <div id="site-name-container" style="">
     <div class="row">
-      <div class="col-9 m-5">
+      <div class="col-8 m-5">
         <h1 class="title is-1" id="site-name">Univers-Toine</h1>
         <h4 class="subtitle" style="background-color: rgba(255,255,255,0.7);width: 300px">Un lieu, des passions</h4>
       </div>
       {% if user.is_authenticated %}
-        <div class="col-2">
-          <div class="row bg-dark m-5">
-            <div class="col">
-              <h3>{{ user.username }}</h3>
+        <div class="col-3">
+          <div class="row bg-dark m-5 d-flex align-items-center">
+            <div class="col p-2">
+              <img src="/static/uploads/avatars/{{ profile.avatar }}" alt="avatar" class="" style="float:left;width:50px;">
+              <h2>{{ user.username }} | Niv.{{ profile.level }}</h2>
+              <p>
+                {{ profile.money }} <i class="fa-solid fa-coins text-warning"></i>
+              </p>
+              <p>
+                {% if user.is_superuser %}
+                  <a href="/admin/" target="_blank"><i class="fa-solid fa-toolbox"></i> Admin</a> | 
+                {% endif %}
+                <a href=""><i class="fa-solid fa-address-card"></i> Profil</a> | 
+                <a href=""><i class="fa-solid fa-power-off"></i> Partir</a>
+              </p>
+              <p>
+                <small class="text-muted">Inscrit le {{ user.date_joined }}</small><br>
+                <small class="text-muted">Dernière connexion le {{ user.last_login }}</small>
+              </p>
             </div>
           </div>
         </div>

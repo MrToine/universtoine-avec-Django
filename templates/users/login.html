@@ -10,8 +10,8 @@
     </div>
     <div class="row">
         <div class="col-4 mx-auto bg-dark p-3">
-            {% if message %}
-                <div class="alert alert-danger">{{ message }}</div>
+            {% if message_error %}
+                <div class="alert alert-danger">{{ message_error }}</div>
             {% endif %}
             <form action="{% url 'users:login' %}" method="post">
                 {% csrf_token %}
@@ -28,6 +28,9 @@
                     <a href="{% url 'users:register' %}" class="btn btn-warning">Créer un compte</a>
                 </div>
             </form>
+            {% if message_error %}
+                <p class="text-warning">Si le problème  n'est toujours pas résolu, tu peut contacter l'administration ici : contact</p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+    <head>    
+        <title>Site en Maintenance</title>
+        <meta charset="UTF-8">
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/personal.css' %}">
+        <style>
+          h1 { font-size: 50px; }
+          body { background:#fff; font: 20px Helvetica, sans-serif; color: #333; }
+          article { display: block; text-align: left; width: 650px; margin: 0 auto; }
+          a { color: #dc8100; text-decoration: none; }
+          a:hover { color: #333; text-decoration: none; }
+        </style>
+    </head>
+    <body>    
+        <article>
+            <div>
+                <img src="/static/img/bg-maintencance.png" style="width:300px" />
+            </div>
+            <h1>{{ message.name }}</h1>
+            <div>
+                {{ message.content|safe }}
+                <p>&mdash; Ton équipe favorite</p>
+            </div>
+        </article>
+        <center><small><a href="/admin/">Administration</a></small></center>
+    </body>
+</html>

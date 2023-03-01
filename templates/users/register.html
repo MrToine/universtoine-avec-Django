@@ -15,8 +15,18 @@
     </div>
     <div class="row">
         <div class="col-4 mx-auto bg-dark p-3">
-            {% if message %}
-                <div class="alert alert-danger">{{ message }}</div>
+            {% if errors > 0 %}
+                <div class="alert alert-danger">
+                    <p>{{ errors }} erreur(s) lors de l'inscription : </p>
+                    <ul>
+                        {% for error in message_error %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if message_success %}
+                <div class="alert alert-success">{{ message_success }}</div>
             {% endif %}
             <form action="{% url 'users:register' %}" method="post">
                 {% csrf_token %}
